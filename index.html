@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html ng-app="userProfiles">
 <head>
     <meta charset="utf-8">
@@ -6,11 +5,18 @@
     <link rel="stylesheet" href="styles.css"></link>
 </head>
 <body ng-controller="MainController">
-    
-    {{thisAppIsBroken}}
-    
+<header></header>
+<div class="main">
+    <div class="profile" ng-repeat="user in users" ng-class="{favorite: user.isFavorite}">
+        <img ng-src="{{user.avatar}}"></img>
+        <span>{{user.first_name[0].toUpperCase()+user.first_name.substring(1,user.first_name.length)}} {{user.last_name[0].toUpperCase()+user.last_name.substring(1,user.last_name.length)}}</span>
+        <button ng-click="toggleFavorite(user.id)">+</button>
+    </div>
+</div>
+<footer></footer>
      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
      <script src="app.js"></script>
      <script src="controller.js"></script>
+     <script src="mainService.js"></script>
 </body>
 </html>
